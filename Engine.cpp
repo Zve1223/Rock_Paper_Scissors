@@ -635,14 +635,19 @@ namespace rps
 
 			while (window->pollEvent(event))
 			{
-				if (event.type == sf::Event::Closed)
-					window->close();
-				else if (event.type == sf::Event::Resized)
+				switch (event.type)
+				{
+				case sf::Event::Closed:
+				{
+					window->close(); break;
+				}
+				case sf::Event::Resized:
 				{
 					isFullscreen = !isFullscreen;
 					setFullscreen();
+					break;
 				}
-				else if (event.type == sf::Event::KeyPressed)
+				case sf::Event::KeyPressed:
 				{
 					switch (event.key.code)
 					{
@@ -675,8 +680,10 @@ namespace rps
 					case sf::Keyboard::Z:
 						changeCount(-1ll); break;
 					}
+
+					break;
 				}
-				else if (event.type == sf::Event::KeyReleased)
+				case sf::Event::KeyReleased:
 				{
 					switch (event.key.code)
 					{
@@ -693,6 +700,9 @@ namespace rps
 						setFullscreen();
 						break;
 					}
+
+					break;
+				}
 				}
 			}
 
