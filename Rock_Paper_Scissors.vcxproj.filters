@@ -36,9 +36,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="icon1.ico">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
     <Image Include="Icon\icon.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>

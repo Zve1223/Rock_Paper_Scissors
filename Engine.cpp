@@ -706,7 +706,7 @@ namespace rps
 				}
 			}
 
-			for (uint8_t type = 0u; type < types; ++type)
+			for (uint8_t type = ROCK; type < types; ++type)
 			{
 				uint8_t victimType = (type + types - 1u) % types;
 				uint8_t hunterType = (type + 1u) % types;
@@ -739,24 +739,22 @@ namespace rps
 						moveTo(object, nearestHunter->getPosition(), -speed * 0.5f);
 					}
 					sf::Vector2f myPos = object->getPosition();
-					if (winSize.x - size < myPos.x || myPos.x < size || winSize.y - size < myPos.y || myPos.y < size)
-					{
-						float x = std::fmaxf(std::fminf(myPos.x, winSize.x - size), size);
-						float y = std::fmaxf(std::fminf(myPos.y, winSize.y - size), size);
-						object->setPosition(sf::Vector2f(x, y));
-					}
+					float x = std::fmax(std::fmin(myPos.x, static_cast<float>(winSize.x) - size), size);
+					float y = std::fmax(std::fmin(myPos.y, static_cast<float>(winSize.y) - size), size);
+					object->setPosition(sf::Vector2f(x, y));
 				}
 			}
 
 			window->clear();
 
-			for (uint8_t type = 0u; type < types; ++type)
+			for (uint8_t type = ROCK; type < types; ++type)
 			{
 				for (auto object : objects[type])
 				{
 					window->draw(*object);
 				}
 			}
+			debugLog(2ull, objects[ROCK][0]->getPosition().x, objects[ROCK][0]->getPosition().y);
 
 			if (isF3Menu)
 			{

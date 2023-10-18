@@ -154,7 +154,6 @@
     <ResourceCompile Include="Rock_Paper_Scissors.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="icon1.ico" />
     <Image Include="Icon\icon.ico" />
     <Image Include="Icon\icon.png" />
   </ItemGroup>
